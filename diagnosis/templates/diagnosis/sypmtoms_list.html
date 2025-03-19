@@ -1,0 +1,21 @@
+{% extends "layout.html" %} 
+
+{% block title %}Symptoms{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Symptoms</h1>
+
+    {% for symptom in symptoms %}
+        <article class="post">
+            <h2>
+                <a href="{% url 'diagnosis:symptom-page' slug=symptom.slug %}">
+                    {{ symptom.description }}
+                </a>
+            </h2>
+            <p>{{ symptom.date }}
+        </article>
+    {% endfor %}
+
+</section>
+{% endblock %}

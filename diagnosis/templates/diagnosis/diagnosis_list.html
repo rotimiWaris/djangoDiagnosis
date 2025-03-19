@@ -1,0 +1,22 @@
+{% extends "layout.html" %} 
+
+{% block title %}Diagnoses{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Diagnoses</h1>
+
+    {% for diagnosis in diagnoses %}
+        <article class="post">
+            <h2>
+                <a href="{% url 'diagnosis:diagnosis-page' slug=diagnosis.slug %}">
+                    {{ diagnosis.symptoms }}
+                </a>
+            </h2>
+            <p>{{ diagnosis.date }} by {{ diagnosis.author }}</p>
+            <p>{{ diagnosis.result }}</p>
+        </article>
+    {% endfor %}
+
+</section>
+{% endblock %}

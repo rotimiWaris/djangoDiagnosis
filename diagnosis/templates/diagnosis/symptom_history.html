@@ -1,0 +1,31 @@
+{% extends "layout.html" %} 
+
+{% block title %}Symptom History{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Symptom History</h1>
+
+    {% if symptoms %}
+    <p>You have {{ symptoms|length }} symptom(s) in your history.</p>
+    {% for symptom in symptoms %}
+        <article class="post">
+            <h2>
+                <a href="{% url 'diagnosis:symptom-page' slug=symptom.slug %}">
+                    {{ symptom.description }}
+                </a>
+            </h2>
+            <p>{{ symptom.date }}</p>
+
+            <a href="{% url 'diagnosis:update_symptom' symptom.id %}" class="btn btn-primary btn-sm">Update</a>
+            <form action="{% url 'diagnosis:delete_symptom' symptom.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+        </article>
+    {% endfor %}
+    {% else %}
+    <p>You have no symptoms in your history.</p>
+  {% endif %}
+</section>
+{% endblock %}

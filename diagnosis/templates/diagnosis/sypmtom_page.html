@@ -1,0 +1,11 @@
+{% extends "layout.html" %} 
+
+{% block title %}{{ symptom.description }}{% endblock %}
+
+{% block content %}
+<section>
+    <h1>{{ symptom.description }}</h1>
+    <p>{{ symptom.date }}</p>
+
+</section>
+{% endblock %}

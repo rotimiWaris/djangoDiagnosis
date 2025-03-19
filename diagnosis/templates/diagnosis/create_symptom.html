@@ -1,0 +1,15 @@
+{% extends "layout.html" %} 
+
+{% block title %}New Symptom{% endblock %}
+
+{% block content %}
+<section>
+    <h1>New Symptom</h1>
+
+    <form class="form-with-validation" action="{% url 'diagnosis:create-symptom' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button class="form-submit">Add Symptom</button>
+    </form>
+</section>
+{% endblock %}

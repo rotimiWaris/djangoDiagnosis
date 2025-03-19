@@ -1,0 +1,32 @@
+{% extends "layout.html" %} 
+
+{% block title %}Diagnosis History{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Diagnosis History</h1>
+
+    {% if diagnoses %}
+    <p>You have {{ diagnoses|length }} diagnosis(es) in your history.</p>
+    {% for diagnosis in diagnoses %}
+        <article class="post">
+            <h2>
+                <a href="{% url 'diagnosis:diagnosis-page' slug=diagnosis.slug %}">
+                    {{ diagnosis.symptoms }}
+                </a>
+            </h2>
+            <p>{{ diagnosis.date }} by {{ diagnosis.author }}</p>
+            <p>{{ diagnosis.result }}</p>
+
+            <a href="{% url 'diagnosis:update_diagnosis' diagnosis.id %}" class="btn btn-primary btn-sm">Update</a>
+            <form action="{% url 'diagnosis:delete_diagnosis' diagnosis.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+        </article>
+    {% endfor %}
+    {% else %}
+    <p>You have no diagnoses in your history.</p>
+  {% endif %}
+</section>
+{% endblock %}
