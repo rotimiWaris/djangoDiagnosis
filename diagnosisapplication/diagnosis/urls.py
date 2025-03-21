@@ -16,4 +16,10 @@ urlpatterns = [
     path('delete/<int:diagnosis_id>/', views.delete_diagnosis, name='delete_diagnosis'),
     path('symp/<slug:slug>', views.symptom_page, name="symptom-page"),
     path('<slug:slug>', views.diagnosis_page, name="diagnosis-page"),
+
+    # API
+    path('api/symp/', views.SymptomListCreate.as_view(), name="symptom-view-create"),
+    path('api/symp/<int:pk>/', views.SymptomRetrieveUpdateDestroy.as_view(), name="symptom-update"),
+    path('api/diagnosis/', views.DiagnosisListCreate.as_view(), name="diagnosis-view-create"),
+    path('api/diagnosis/<int:pk>/', views.DiagnosisRetrieveUpdateDestroy.as_view(), name="diagnosis-update"),
 ]

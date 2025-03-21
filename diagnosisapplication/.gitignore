@@ -9,8 +9,11 @@ staticfiles/
 
 # Virtual Environment
 venv/
+.env
 .env/
 .env*/
 
 # IDE
 .vscode/
+
+shema.yml

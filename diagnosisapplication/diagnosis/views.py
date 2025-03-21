@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Diagnosis, Symptom
 from django.contrib.auth.decorators import login_required
+from rest_framework import generics, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from . import forms
+from .models import Diagnosis, Symptom
+from .serializers import SymptomSerializer, DiagnosisSerializer
 
 # Create your views here.
 def symptoms_list(request):
@@ -96,3 +100,31 @@ def delete_diagnosis(request, diagnosis_id):
         diagnosis.delete()
         return redirect('diagnosis:diagnosis_history')
     return render(request, 'diagnosis/confirm_delete.html', {'diagnosis': diagnosis})
+
+
+# API
+class SymptomListCreate(generics.ListCreateAPIView):
+    queryset = Symptom.objects.all()
+    serializer_class = SymptomSerializer
+
+    def delete(self, request, *args, **kwargs):
+        Symptom.objects.all().delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class SymptomRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Symptom.objects.all()
+    serializer_class = SymptomSerializer
+    lookup_field = 'pk'
+
+class DiagnosisListCreate(generics.ListCreateAPIView):
+    queryset = Diagnosis.objects.all()
+    serializer_class = DiagnosisSerializer
+
+    def delete(self, request, *args, **kwargs):
+        Diagnosis.objects.all().delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class DiagnosisRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Diagnosis.objects.all()
+    serializer_class = DiagnosisSerializer
+    lookup_field = 'pk'

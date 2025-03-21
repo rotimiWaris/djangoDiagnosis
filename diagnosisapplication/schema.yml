@@ -1,0 +1,390 @@
+openapi: 3.0.3
+info:
+  title: Diagnosis App
+  version: 0.0.0
+paths:
+  /diagnosis/api/diagnosis/:
+    get:
+      operationId: diagnosis_api_diagnosis_list
+      tags:
+      - diagnosis
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Diagnosis'
+          description: ''
+    post:
+      operationId: diagnosis_api_diagnosis_create
+      tags:
+      - diagnosis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Diagnosis'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Diagnosis'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Diagnosis'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Diagnosis'
+          description: ''
+    delete:
+      operationId: diagnosis_api_diagnosis_destroy
+      tags:
+      - diagnosis
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /diagnosis/api/diagnosis/{id}/:
+    get:
+      operationId: diagnosis_api_diagnosis_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - diagnosis
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Diagnosis'
+          description: ''
+    put:
+      operationId: diagnosis_api_diagnosis_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - diagnosis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Diagnosis'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Diagnosis'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Diagnosis'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Diagnosis'
+          description: ''
+    patch:
+      operationId: diagnosis_api_diagnosis_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - diagnosis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDiagnosis'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDiagnosis'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDiagnosis'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Diagnosis'
+          description: ''
+    delete:
+      operationId: diagnosis_api_diagnosis_destroy_2
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - diagnosis
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /diagnosis/api/symp/:
+    get:
+      operationId: diagnosis_api_symp_list
+      tags:
+      - diagnosis
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Symptom'
+          description: ''
+    post:
+      operationId: diagnosis_api_symp_create
+      tags:
+      - diagnosis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Symptom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Symptom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Symptom'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Symptom'
+          description: ''
+    delete:
+      operationId: diagnosis_api_symp_destroy
+      tags:
+      - diagnosis
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /diagnosis/api/symp/{id}/:
+    get:
+      operationId: diagnosis_api_symp_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - diagnosis
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Symptom'
+          description: ''
+    put:
+      operationId: diagnosis_api_symp_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - diagnosis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Symptom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Symptom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Symptom'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Symptom'
+          description: ''
+    patch:
+      operationId: diagnosis_api_symp_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - diagnosis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSymptom'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSymptom'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSymptom'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Symptom'
+          description: ''
+    delete:
+      operationId: diagnosis_api_symp_destroy_2
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - diagnosis
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Diagnosis:
+      type: object
+      properties:
+        symptoms:
+          type: integer
+        result:
+          type: string
+        author:
+          type: integer
+        date:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - date
+      - result
+      - symptoms
+    PatchedDiagnosis:
+      type: object
+      properties:
+        symptoms:
+          type: integer
+        result:
+          type: string
+        author:
+          type: integer
+        date:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedSymptom:
+      type: object
+      properties:
+        description:
+          type: string
+        author:
+          type: integer
+        date:
+          type: string
+          format: date-time
+          readOnly: true
+    Symptom:
+      type: object
+      properties:
+        description:
+          type: string
+        author:
+          type: integer
+        date:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - date
+      - description
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
