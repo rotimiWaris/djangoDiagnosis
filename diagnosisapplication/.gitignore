@@ -16,4 +16,4 @@ venv/
 # IDE
 .vscode/
 
-shema.yml
+schema.yml
